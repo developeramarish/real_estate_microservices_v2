@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["Chat.csproj", ""]
-RUN dotnet restore "./Chat.csproj"
+COPY ["Chat/Chat/Chat.csproj", "Chat/Chat/"]
+RUN dotnet restore "Chat/Chat/Chat.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/Chat/Chat"
 RUN dotnet build "Chat.csproj" -c Release -o /app/build
 
 FROM build AS publish

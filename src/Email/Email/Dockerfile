@@ -5,10 +5,10 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["Email.csproj", ""]
-RUN dotnet restore "./Email.csproj"
+COPY ["Email/Email.csproj", "Email/"]
+RUN dotnet restore "Email/Email.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/Email"
 RUN dotnet build "Email.csproj" -c Release -o /app/build
 
 FROM build AS publish

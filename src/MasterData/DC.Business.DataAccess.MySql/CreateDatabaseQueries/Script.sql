@@ -1,4 +1,7 @@
-﻿create table Users(
+﻿CREATE DATABASE IF NOT EXISTS properties;
+USE properties;
+
+create table Users(
     Id int AUTO_INCREMENT PRIMARY KEY,
     Name NVARCHAR(50) NULL,
     Surname NVARCHAR(50) NULL,
