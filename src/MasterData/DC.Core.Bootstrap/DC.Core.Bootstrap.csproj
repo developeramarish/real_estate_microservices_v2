@@ -13,4 +13,9 @@
     <ProjectReference Include="..\DC.Core.Messaging.RabbitMQ\DC.Core.Messaging.RabbitMQ.csproj" />
     <ProjectReference Include="..\DC.Core.Security.Jwt\DC.Core.Security.Jwt.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\..\Common\obj\Debug\netcoreapp3.1\Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

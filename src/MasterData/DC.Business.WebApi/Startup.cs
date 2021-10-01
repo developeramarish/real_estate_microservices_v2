@@ -18,14 +18,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using Newtonsoft.Json;
-using DC.Core.Contracts.Infrastructure.RabbitMQ;
-using DC.Business.WebApi.Middleware;
-using MySql.Data.MySqlClient;
-using DC.Core.DataAccess.MySql;
-using DC.Business.WebApi.Infrastructure;
-using System.Threading;
 using DC.Business.WebApi.Infrastructure.DatabaseExtension;
-// using System.Text.Json.Serialization;
 
 namespace DC.Business.WebApi
 {

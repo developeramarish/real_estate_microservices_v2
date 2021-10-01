@@ -3,12 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using DC.Core.Contracts.Infrastructure.Security;
 using DC.Core.Security.Jwt;
-using DC.Core.Contracts.Infrastructure.RabbitMQ;
-using DC.Core.Messaging.RabbitMQ;
 using RabbitMQ.Client;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
+using Common.RabbitMQ;
 
 namespace DC.Core.Bootstrap
 {

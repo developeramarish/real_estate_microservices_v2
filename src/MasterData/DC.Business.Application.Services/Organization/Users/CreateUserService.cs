@@ -13,7 +13,6 @@ using DC.Core.Contracts.Application.Pipeline.Dtos.Errors;
 using DC.Business.Application.Contracts.Dtos.Constants;
 using DC.Business.Application.Services.Helpers;
 using DC.Business.Domain.Repositories.ElasticSearch;
-using DC.Core.Contracts.Infrastructure.RabbitMQ;
 using System.Text.Json;
 using DC.Business.Domain.Enums;
 using DC.Business.WebApi.Helpers;
@@ -23,6 +22,7 @@ using DC.Business.Application.Contracts.Interfaces.Organization.Listing;
 using DC.Business.Application.Contracts.Interfaces.Services;
 using DC.Business.Application.Contracts.Dtos.Organization.Listing;
 using DC.Business.Application.Contracts.Dtos.Image;
+using Common.RabbitMQ;
 
 namespace DC.Business.Application.Services.Organization.Users
 {

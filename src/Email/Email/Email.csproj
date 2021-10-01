@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bootstrap\Bootstrap.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Common">
       <HintPath>..\..\Common\obj\Debug\net5.0\Common.dll</HintPath>
     </Reference>

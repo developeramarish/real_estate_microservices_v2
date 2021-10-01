@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Common.RabbitMQ;
 using DC.Business.Application.Contracts.Dtos.Organization.Listing;
 using DC.Business.Application.Contracts.Interfaces.Organization.Listing;
 using DC.Business.Application.Services.Pipeline;
@@ -15,7 +16,6 @@ using DC.Business.Domain.Repositories.Organization;
 using DC.Core.Contracts.Application.Pipeline.Dtos;
 using DC.Core.Contracts.Application.Pipeline.Dtos.Errors;
 using DC.Core.Contracts.Application.Pipeline.Dtos.Output;
-using DC.Core.Contracts.Infrastructure.RabbitMQ;
 
 namespace DC.Business.Application.Services.Organization.Listing
 {
