@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <PackageId>PropertyForYou.Common</PackageId>
-    <Authors>PropertyForYou.Common</Authors>
-    <Product>PropertyForYou.Common5.0</Product>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>PropertyForYou.Common3.1</PackageId>
+    <Authors>PropertyForYou.Common3.1</Authors>
+    <Product>PropertyForYou.Common3.1</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

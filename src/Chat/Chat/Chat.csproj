@@ -10,17 +10,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="PropertyForYou.Common" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Common">
-      <HintPath>..\..\..\Common\bin\Debug\net5.0\Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
