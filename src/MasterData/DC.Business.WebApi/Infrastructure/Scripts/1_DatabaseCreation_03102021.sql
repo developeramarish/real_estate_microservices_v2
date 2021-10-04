@@ -22,14 +22,16 @@ create table Users(
 );
 create table PropertyType(
     Id int AUTO_INCREMENT PRIMARY KEY,
-    Type NVARCHAR(30) NOT NULL,
+    Type int NULL,
+    TypeName NVARCHAR(30) NOT NULL,
     CreationDate datetime NULL,
     UpdateDate datetime NULL,
     Deleted bit NULL
 );
 create table OperationType(
     Id int AUTO_INCREMENT PRIMARY KEY,
-    Type NVARCHAR(30) NOT NULL,
+    Type int NULL,
+    TypeName NVARCHAR(30) NOT NULL,
     CreationDate datetime NULL,
     UpdateDate datetime NULL,
     Deleted bit NULL
@@ -140,9 +142,9 @@ create table Characteristics(
     Deleted bit NULL,
 FOREIGN KEY (PropertyId) REFERENCES Property(Id) ON DELETE CASCADE
 );
-INSERT INTO `properties`.`PropertyType` (`Type`, `CreationDate`, `UpdateDate`) Values("House", NOW(), NOW());
-INSERT INTO `properties`.`PropertyType` (`Type`, `CreationDate`, `UpdateDate`) Values("Apartment", NOW(), NOW());
-INSERT INTO `properties`.`PropertyType` (`Type`, `CreationDate`, `UpdateDate`) Values("Room", NOW(), NOW());
+INSERT INTO `properties`.`PropertyType` (`Type`, `TypeName`, `CreationDate`, `UpdateDate`) Values(1, "House", NOW(), NOW());
+INSERT INTO `properties`.`PropertyType` (`Type`, `TypeName`, `CreationDate`,`UpdateDate`) Values(2, "Apartment", NOW(), NOW());
+INSERT INTO `properties`.`PropertyType` (`Type`, `TypeName`, `CreationDate`,`UpdateDate`) Values(3, "Room", NOW(), NOW());
 
-INSERT INTO `properties`.`OperationType` (`Type`, `CreationDate`, `UpdateDate`) Values("Buy", NOW(), NOW());
-INSERT INTO `properties`.`OperationType` (`Type`, `CreationDate`, `UpdateDate`) Values("Rent", NOW(), NOW());
+INSERT INTO `properties`.`OperationType` (`Type`, `TypeName`, `CreationDate`, `UpdateDate`) Values(1, "Buy", NOW(), NOW());
+INSERT INTO `properties`.`OperationType` (`Type`, `TypeName`, `CreationDate`, `UpdateDate`) Values(2, "Rent", NOW(), NOW());

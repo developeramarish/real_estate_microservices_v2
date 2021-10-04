@@ -7,6 +7,6 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Listing.Admin
 {
     public class SearchPropertyForAdminRequestDto
     {
-       public PropertyStateDto Type { get; set; }
+       public PropertyStateEnumDto Type { get; set; }
     }
 }

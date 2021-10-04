@@ -16,7 +16,7 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Users
         public string Country { get; set; } 
         public string Address { get; set; } 
         public string TaxNumber { get; set; }
-        public UserTypeDto Type { get; set; }
+        public UserTypeEnumDto Type { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
         public string Token { get; set; }

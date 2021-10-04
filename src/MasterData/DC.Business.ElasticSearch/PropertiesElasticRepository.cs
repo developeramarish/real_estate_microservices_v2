@@ -74,7 +74,7 @@ namespace DC.Business.ElasticSearch
                      .Relation(RangeRelation.Within)),
                  dq => dq.Term(m => m.PropertyTypeId, searchCriteria.PropertyTypeId),
                  dq => dq.Term(m => m.OperationTypeId, searchCriteria.OperationTypeId),
-                 dq => dq.Term(l => l.State, PropertyState.Active)
+                 dq => dq.Term(l => l.State, PropertyStateEnum.Active)
                      )
                   )
              )
@@ -103,13 +103,13 @@ namespace DC.Business.ElasticSearch
 
         public async Task ApprovePropertyForAdminService(string documentId)
         {
-            var state = new { State = PropertyState.Active };
+            var state = new { State = PropertyStateEnum.Active };
             elasticClient.Update<Property, object>(documentId, u => u.Doc(state).RetryOnConflict(1));
         }
 
         public async Task BlockPropertyByAdminService(string documentId)
         {
-            var state = new { State = PropertyState.Blocked };
+            var state = new { State = PropertyStateEnum.Blocked };
             elasticClient.Update<Property, object>(documentId, u => u.Doc(state).RetryOnConflict(1));
         }
 
@@ -126,6 +126,28 @@ namespace DC.Business.ElasticSearch
         public async Task<IEnumerable<Property>> GetAllPropertiesAsync()
         {
             var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties").Size(10).Sort(q => q.Descending(p => p.Price))).ConfigureAwait(false);
+            return (IEnumerable<Property>)result;
+        }
+
+        public async Task<IEnumerable<Property>> GetTop4NewHousesAsync(int typeId)
+        {
+            var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
+            .Query(x => x.Term(x => x.PropertyTypeId, typeId))
+            .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
+            return (IEnumerable<Property>)result;
+        }
+        public async Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId)
+        {
+            var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
+            .Query(x => x.Term(x => x.PropertyTypeId, typeId))
+            .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
+            return (IEnumerable<Property>)result;
+        }
+        public async Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId)
+        {
+            var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
+            .Query(x => x.Term(x => x.PropertyTypeId, typeId))
+            .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
             return (IEnumerable<Property>)result;
         }
 

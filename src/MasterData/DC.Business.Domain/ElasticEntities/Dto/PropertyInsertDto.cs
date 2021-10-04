@@ -30,6 +30,8 @@ namespace DC.Business.Domain.ElasticEntities.Dto
         public List<Characteristics> Characteristics { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public PropertyState State { get; set; }
+        public PropertyStateEnum State { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

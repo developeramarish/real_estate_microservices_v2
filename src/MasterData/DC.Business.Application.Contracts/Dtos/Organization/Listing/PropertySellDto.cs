@@ -33,7 +33,7 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Listing
         public long PropertyTypeId { get; set; }
         public long OperationTypeId { get; set; }
 
-        public PropertyStateDto State { get; set; }
+        public PropertyStateEnumDto State { get; set; }
 
         public List<PropertyImageDto> Images { get; set; }
     }

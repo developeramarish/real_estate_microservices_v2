@@ -18,5 +18,9 @@ namespace DC.Business.Domain.Repositories.ElasticSearch
         Task UpdatePropertyImagesByMySqlId(string documentId, List<PropertyImage> imagePaths);
         Task ApprovePropertyForAdminService(string documentId);
         Task BlockPropertyByAdminService(string documentId);
+
+        Task<IEnumerable<Property>> GetTop4NewHousesAsync(int typeId);
+        Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId);
+        Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId);
     }
 }

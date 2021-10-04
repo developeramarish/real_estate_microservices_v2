@@ -27,6 +27,6 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Listing
         public double Longitude { get; set; }
         public long PropertyTypeId { get; set; }
         public long OperationTypeId { get; set; }
-        public PropertyStateDto State { get; set; }
+        public PropertyStateEnumDto State { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DC.Business.Application.Contracts.Dtos.Enums
 {
-    public enum UserTypeDto
+    public enum PropertyTypeEnumDto
     {
         None = 0,
-        User = 1,
-        Company = 2,
-        Admin = 3
+        House = 1,
+        Apartment = 2,
+        Room = 3
     }
 }

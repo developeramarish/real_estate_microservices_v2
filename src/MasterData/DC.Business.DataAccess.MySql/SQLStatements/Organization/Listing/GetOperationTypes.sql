@@ -1,4 +1,5 @@
 ﻿SELECT
      ID,
-     TYPE
+     TYPE,
+     TypeName
 FROM OperationType

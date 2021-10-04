@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DC.Business.Application.Contracts.Dtos.Enums
 {
-    public enum PropertyStateDto
+    public enum PropertyStateEnumDto
     {
         None = 0,
         NotApproved = 1,

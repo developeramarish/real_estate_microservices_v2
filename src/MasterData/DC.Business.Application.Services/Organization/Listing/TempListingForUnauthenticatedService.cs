@@ -48,7 +48,7 @@ namespace DC.Business.Application.Services.Organization.Listing
                 City = inputDto.Property.City,
                 Address = inputDto.Property.Address,
                 Description = inputDto.Property.Description,
-                State = PropertyState.NotApproved,
+                State = PropertyStateEnum.NotApproved,
                 CreationDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
                 Deleted = false,

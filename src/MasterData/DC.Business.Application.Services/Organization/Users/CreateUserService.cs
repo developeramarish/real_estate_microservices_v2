@@ -75,10 +75,10 @@ namespace DC.Business.Application.Services.Organization.Users
             User newUser = null;
             if(inputDto.Email == isAdmin)
             {
-                newUser = CreateUser(inputDto, UserType.Admin);
+                newUser = CreateUser(inputDto, UserTypeEnum.Admin);
             } else
             {
-                newUser = CreateUser(inputDto, UserType.User);
+                newUser = CreateUser(inputDto, UserTypeEnum.User);
             }
 
             /* encrypt the password */
@@ -122,7 +122,7 @@ namespace DC.Business.Application.Services.Organization.Users
             return BuildOperationResultDto(newUserId);
         }
 
-        private User CreateUser(CreateUserDto inputDto, UserType type)
+        private User CreateUser(CreateUserDto inputDto, UserTypeEnum type)
         {
             User newUser = new User
             {

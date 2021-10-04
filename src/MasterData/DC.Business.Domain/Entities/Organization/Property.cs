@@ -27,7 +27,9 @@ namespace DC.Business.Domain.Entities.Organization
         public bool Deleted { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public PropertyState State {get;set;}
+        public PropertyStateEnum State {get;set;}
+        public OperationTypeEnum OperationType { get; set; }
+        public PropertyTypeEnum PropertyType { get; set; }
         public long PropertyTypeId { get; set; }
         public long OperationTypeId { get; set; }
         public List<Characteristics> Characteristics { get; set; }

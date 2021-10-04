@@ -17,6 +17,6 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Listing
         public double Longitude { get; set; }
         public string MainPhotoUrl { get; set; }
 
-        public PropertyStateDto State { get; set; }
+        public PropertyStateEnumDto State { get; set; }
     }
 }

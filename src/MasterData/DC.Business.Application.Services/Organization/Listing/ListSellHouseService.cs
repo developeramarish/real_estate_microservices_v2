@@ -49,9 +49,9 @@ namespace DC.Business.Application.Services.Organization.Listing
 
             var property = new Property()
             {
-                UserId = sellHouseDto.UserId, 
-                PropertyTypeId = sellHouseDto.PropertyTypeId, 
-                OperationTypeId = sellHouseDto.OperationTypeId, 
+                UserId = sellHouseDto.UserId,
+                PropertyTypeId = sellHouseDto.PropertyTypeId,
+                OperationTypeId = sellHouseDto.OperationTypeId,
                 Price = sellHouseDto.Price,
                 NetAream2 = sellHouseDto.NetAream2,
                 PriceNetAream2 = sellHouseDto.PriceNetAream2,
@@ -65,7 +65,9 @@ namespace DC.Business.Application.Services.Organization.Listing
                 City = sellHouseDto.City,
                 Address = sellHouseDto.Address,
                 Description = sellHouseDto.Description,
-                State = PropertyState.NotApproved,
+                State = PropertyStateEnum.NotApproved,
+                //PropertyType = sellHouseDto.ope,
+                //OperationType = PropertyStateEnum.NotApproved,
                 CreationDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
                 Deleted = false,
@@ -114,7 +116,9 @@ namespace DC.Business.Application.Services.Organization.Listing
                 Description = sellHouseDto.Description,
                 Latitude = sellHouseDto.Latitude,
                 Longitude = sellHouseDto.Longitude,
-                State = PropertyState.NotApproved,
+                State = PropertyStateEnum.NotApproved,
+                CreationDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
                 Characteristics = _mapper.Map<List<Domain.ElasticEntities.Characteristics>>(characteristics)
             };
 

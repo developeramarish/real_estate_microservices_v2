@@ -4,11 +4,10 @@ using System.Text;
 
 namespace DC.Business.Domain.Enums
 {
-    public enum UserType
+    public enum OperationTypeEnum
     {
         None = 0,
-        User = 1,
-        Company = 2,
-        Admin = 3
+        Buy = 1,
+        Rent = 2
     }
 }

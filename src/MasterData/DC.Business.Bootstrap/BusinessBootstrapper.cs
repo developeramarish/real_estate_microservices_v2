@@ -1,12 +1,13 @@
-﻿using System;
-using DC.Business.Application.Contracts.Interfaces;
+﻿using DC.Business.Application.Contracts.Interfaces;
 using DC.Business.Application.Contracts.Interfaces.Account;
+using DC.Business.Application.Contracts.Interfaces.Organization.Home;
 using DC.Business.Application.Contracts.Interfaces.Organization.Listing;
 using DC.Business.Application.Contracts.Interfaces.Organization.Listing.Admin;
 using DC.Business.Application.Contracts.Interfaces.Organization.Users;
 using DC.Business.Application.Contracts.Interfaces.Services;
 using DC.Business.Application.Services.Account;
 using DC.Business.Application.Services.Elastic;
+using DC.Business.Application.Services.Organization.Home;
 using DC.Business.Application.Services.Organization.Listing;
 using DC.Business.Application.Services.Organization.Listing.Admin;
 using DC.Business.Application.Services.Organization.Users;
@@ -15,8 +16,6 @@ using DC.Business.DataAccess.MySql.Repositories.Organization;
 using DC.Business.Domain.Repositories.ElasticSearch;
 using DC.Business.Domain.Repositories.Organization;
 using DC.Business.ElasticSearch;
-using DC.Business.WebApi.Helpers;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DC.Business.Bootstrap
@@ -45,7 +44,8 @@ namespace DC.Business.Bootstrap
             servicesContainer.AddTransient<ISearchPropertiestForAdminService, SearchPropertiestForAdminService>();
             servicesContainer.AddTransient<IApprovePropertyForAdminService, ApprovePropertyForAdminService>();
             servicesContainer.AddTransient<IBlockPropertyByAdminService, BlockPropertyByAdminService>();
-            servicesContainer.AddTransient<ITempListingForUnauthenticatedService, TempListingForUnauthenticatedService>(); 
+            servicesContainer.AddTransient<ITempListingForUnauthenticatedService, TempListingForUnauthenticatedService>();
+            servicesContainer.AddTransient<IGetHomePageService, GetHomePageService>();
 
 
             return servicesContainer;

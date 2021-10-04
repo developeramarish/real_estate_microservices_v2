@@ -24,7 +24,7 @@ namespace DC.Business.DataAccess.MySql.Extensions
 
         public static IEnumerable<string> GetFilterParameters(this SearchPropertyForAdminRequestDto searchCriteria)
         {
-            if (searchCriteria.Type != PropertyStateDto.None)
+            if (searchCriteria.Type != PropertyStateEnumDto.None)
                 yield return nameof(searchCriteria.Type);
         }
 

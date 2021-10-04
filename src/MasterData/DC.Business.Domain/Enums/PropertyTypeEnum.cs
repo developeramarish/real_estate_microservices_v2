@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DC.Business.Domain.Enums
 {
-    public enum PropertyState
+    public enum PropertyTypeEnum
     {
         None = 0,
-        NotApproved = 1,
-        Active = 2,
-        Blocked = 3
+        House = 1,
+        Apartment = 2,
+        Room = 3
     }
 }
