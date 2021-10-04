@@ -19,6 +19,8 @@ using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using Newtonsoft.Json;
 using DC.Business.WebApi.Infrastructure.DatabaseExtension;
+using DC.Business.WebApi.Infrastructure;
+using Microsoft.Extensions.Options;
 
 namespace DC.Business.WebApi
 {
@@ -93,7 +95,15 @@ namespace DC.Business.WebApi
             //// Register Dependencies
             new DependencyInjection().Bootstrap(services, Configuration);
 
-            DatabaseBootstrap.Configure(Configuration);
+            //services.AddTransient<IStartupFilter, DatabaseInit>();
+            //services.AddTransient<DbLogger<DatabaseInit>>();
+
+            //services.Configure<DatabaseConfig>(Configuration.GetSection("DatabaseConfig"));
+            //services.AddSingleton(provider =>
+            //{
+            //    var configValue = provider.GetRequiredService<IOptions<DatabaseConfig>>().Value;
+            //    return configValue;
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
