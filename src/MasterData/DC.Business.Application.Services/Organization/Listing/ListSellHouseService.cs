@@ -15,7 +15,6 @@ using DC.Business.Domain.Repositories.ElasticSearch;
 using DC.Business.Domain.Repositories.Organization;
 using DC.Core.Contracts.Application.Pipeline.Dtos;
 using DC.Core.Contracts.Application.Pipeline.Dtos.Errors;
-using DC.Core.Contracts.Application.Pipeline.Dtos.Output;
 
 namespace DC.Business.Application.Services.Organization.Listing
 {
@@ -130,11 +129,50 @@ namespace DC.Business.Application.Services.Organization.Listing
             return BuildOperationResultDto(mySqlId);
         }
 
-        private List<ErrorDto> ValidateInput(SellHouseDto sellHouseDt)
+        private List<ErrorDto> ValidateInput(SellHouseDto sellHouseDt0)
         {
             List<ErrorDto> validationsErros = new List<ErrorDto>();
-            if (sellHouseDt == null)
-                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt)));
+            if (sellHouseDt0 == null)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.PropertyTypeId == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.OperationTypeId == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.Price == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.NetAream2 == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.Latitude == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.Longitude == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.NumberOfBathrooms == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (string.IsNullOrEmpty(sellHouseDt0.Typology))
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (string.IsNullOrEmpty(sellHouseDt0.Description))
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (string.IsNullOrEmpty(sellHouseDt0.Address))
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (string.IsNullOrEmpty(sellHouseDt0.City))
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (string.IsNullOrEmpty(sellHouseDt0.Country))
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
+
+            if (sellHouseDt0.GrossAream2 == 0)
+                validationsErros.Add(new ErrorDto(ErrorCodes.REQUIRED_FILED_IS_EMPTY, nameof(sellHouseDt0)));
 
             return validationsErros;
         }

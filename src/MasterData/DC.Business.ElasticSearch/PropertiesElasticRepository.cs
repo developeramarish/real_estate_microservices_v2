@@ -134,21 +134,21 @@ namespace DC.Business.ElasticSearch
             var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
             .Query(x => x.Term(x => x.PropertyTypeId, typeId))
             .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
-            return (IEnumerable<Property>)result;
+            return result.Documents;
         }
         public async Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId)
         {
             var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
             .Query(x => x.Term(x => x.PropertyTypeId, typeId))
             .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
-            return (IEnumerable<Property>)result;
+            return result.Documents;
         }
         public async Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId)
         {
             var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
             .Query(x => x.Term(x => x.PropertyTypeId, typeId))
             .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
-            return (IEnumerable<Property>)result;
+            return result.Documents;
         }
 
 

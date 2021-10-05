@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DC.Business.Application.Contracts.Interfaces.Organization.Home;
+using DC.Core.Contracts.Application.Pipeline.Dtos.Input;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,15 +13,17 @@ namespace DC.Business.WebApi.Controllers.Organization
     [ApiController]
     public class HomeController : ControllerBase
     {
-        public HomeController()
+        private readonly IGetHomePageService _getHomePageService;
+        public HomeController(IGetHomePageService getHomePageService)
         {
-
+            _getHomePageService = getHomePageService ?? throw new ArgumentNullException(nameof(getHomePageService));
         }
 
         [HttpGet("")]
         public async Task<IActionResult> GetHomePageAsync()
         {
-            return Ok();
+            var result = await _getHomePageService.ExecuteServiceAsync(new VoidInputDto());
+            return Ok(result);
         }
     }
 }
