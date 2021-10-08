@@ -18,5 +18,7 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Listing
         public string MainPhotoUrl { get; set; }
 
         public PropertyStateEnumDto State { get; set; }
+
+        public PropertyTypeEnumDto PropertyType { get; set; }
     }
 }

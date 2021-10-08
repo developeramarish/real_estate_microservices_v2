@@ -28,5 +28,6 @@ namespace DC.Business.Application.Contracts.Dtos.Organization.Listing
         public long PropertyTypeId { get; set; }
         public long OperationTypeId { get; set; }
         public PropertyStateEnumDto State { get; set; }
+        public PropertyTypeEnumDto PropertyType { get; set; }
     }
 }

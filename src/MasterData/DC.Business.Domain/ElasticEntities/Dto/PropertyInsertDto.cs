@@ -31,7 +31,9 @@ namespace DC.Business.Domain.ElasticEntities.Dto
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public PropertyStateEnum State { get; set; }
+        public PropertyTypeEnum PropertyType { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
+        public bool Deleted { get; set; }
     }
 }

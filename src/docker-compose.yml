@@ -11,7 +11,8 @@ services:
       - RABBIT_HOSTNAME=rabbitmq1
     restart: always
     depends_on:
-      - rabbitmq1
+      rabbitmq1:
+        condition: service_healthy
     ports:
       - 80:80
     volumes:
@@ -89,7 +90,8 @@ services:
       dockerfile: Email/Email/Dockerfile
     restart: always
     depends_on:
-      - rabbitmq1
+      rabbitmq1:
+        condition: service_healthy
     ports:
       - "81:80"
     networks:

@@ -17,12 +17,10 @@ namespace DC.Business.WebApi.Infrastructure.Automapper
             CreateMap<Domain.ElasticEntities.PropertyImage, PropertyImageDto>();
             CreateMap<PropertyImageDto, Domain.ElasticEntities.PropertyImage>();
 
-            CreateMap<CharacteristicsDto, Domain.ElasticEntities.Characteristics>();
-            CreateMap<Domain.ElasticEntities.Characteristics, CharacteristicsDto>();
-
-            CreateMap<Characteristics, Domain.ElasticEntities.Characteristics>();
-            CreateMap<Characteristics, CharacteristicsDto>();
+            CreateMap<SellHouseDto, Property>();
             CreateMap<Property, SellHouseDto>();
+
+            CreateMap<SellHouseDto, Domain.ElasticEntities.Dto.PropertyInsertDto>();
         }
     }
 }

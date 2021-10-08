@@ -35,7 +35,7 @@ namespace DC.Business.Application.Services.Account
         private readonly IListingRepository _listingRepository;
         private readonly AppSettings _appSettings;
         private IMapper _mapper;
-        private readonly IListSellHouseService _listSellHouseService;
+        private readonly IListPropertyService _listSellHouseService;
         private readonly IImageService _imageService;
 
 
@@ -44,7 +44,7 @@ namespace DC.Business.Application.Services.Account
             IOptions<AppSettings> appSettings,
             IListingRepository listingRepository,
             IMapper mapper,
-            IListSellHouseService listSellHouseService,
+            IListPropertyService listSellHouseService,
             IImageService imageService)
         {
             _listSellHouseService = listSellHouseService ?? throw new ArgumentNullException(nameof(listSellHouseService));

@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
+using DC.Business.Application.Contracts.Dtos.Enums;
 using DC.Business.Application.Contracts.Dtos.Organization.Listing;
 using DC.Business.Domain.Entities.Organization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DC.Business.Domain.Enums;
 
 namespace DC.Business.WebApi.Infrastructure.Automapper
 {
@@ -13,6 +11,8 @@ namespace DC.Business.WebApi.Infrastructure.Automapper
         public PropertyTypeProfile()
         {
             CreateMap<PropertyType, PropertyTypeDto>();
+            CreateMap<PropertyTypeEnum, PropertyTypeEnumDto>();
+            CreateMap<PropertyTypeEnumDto, PropertyTypeEnum>();
         }
     }
 }

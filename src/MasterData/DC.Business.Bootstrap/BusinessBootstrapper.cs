@@ -31,7 +31,7 @@ namespace DC.Business.Bootstrap
             servicesContainer.AddTransient<IGetUserByIdService, GetUserByIdService>();
             servicesContainer.AddTransient<IGetUserByEmailService, GetUserByEmailService>();
             servicesContainer.AddTransient<ISearchUserService, SearchUserService>();
-            servicesContainer.AddTransient<IListSellHouseService, ListSellHouseService>();
+            servicesContainer.AddTransient<IListPropertyService, ListPropertyService>();
             servicesContainer.AddTransient<IGetOperationTypesService, GetOperationTypesService>();
             servicesContainer.AddTransient<IGetPropertyTypesService, GetPropertyTypesService>();
             servicesContainer.AddTransient<IGetPropertiesByUserBasicService, GetPropertiesByUserBasicService>();

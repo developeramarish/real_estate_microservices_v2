@@ -51,7 +51,7 @@ namespace DC.Business.Application.Services.Organization.Home
         }
 
         public async Task<List<PropertyBasicDto>> GetHotPropertiesToBuyAsync(PropertyType type) {
-            var result = await _propertiesElasticRepository.GetTop4NewHousesAsync(type.Id);
+            var result = await _propertiesElasticRepository.GetTop4ByTypePropertiesAsync(type.Type);
             List<PropertyBasicDto> list = new List<PropertyBasicDto>();
             if(result != null && result?.Count() > 0)
             {
@@ -71,7 +71,7 @@ namespace DC.Business.Application.Services.Organization.Home
             return list;
         }
         public async Task<List<PropertyBasicDto>> GetNewRoomsToRentAsync(PropertyType type) {
-            var result = await _propertiesElasticRepository.GetTop4NewRoomsAsync(type.Id);
+            var result = await _propertiesElasticRepository.GetTop4ByTypePropertiesAsync(type.Type);
             List<PropertyBasicDto> list = new List<PropertyBasicDto>();
             if (result != null && result?.Count() > 0)
             {
@@ -91,7 +91,7 @@ namespace DC.Business.Application.Services.Organization.Home
             return list;
         }
         public async Task<List<PropertyBasicDto>> GetNewApartmentsToBuyAsync(PropertyType type) {
-            var result = await _propertiesElasticRepository.GetTop4NewApartmentsAsync(type.Id);
+            var result = await _propertiesElasticRepository.GetTop4ByTypePropertiesAsync(type.Type);
             List<PropertyBasicDto> list = new List<PropertyBasicDto>();
             if (result != null && result?.Count() > 0)
             {

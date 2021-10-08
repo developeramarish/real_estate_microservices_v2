@@ -1,15 +1,12 @@
 ﻿using DC.Business.Application.Contracts.Interfaces.Organization.Home;
 using DC.Core.Contracts.Application.Pipeline.Dtos.Input;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DC.Business.WebApi.Controllers.Organization
 {
-    [Route("api/[controller]")]
+    [Route("api/organization/[controller]")]
     [ApiController]
     public class HomeController : ControllerBase
     {

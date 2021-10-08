@@ -30,6 +30,13 @@ namespace DC.Business.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpPost, Route("logout")]
+        public async Task<IActionResult> LogoutAsync([FromBody] EmailAndPasswordInputDto emailAndPassword, CancellationToken cancellationToken)
+        {
+            
+            return Ok();
+        }
+
 
     }
 }

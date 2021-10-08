@@ -5,7 +5,7 @@ using DC.Core.Contracts.Application.Pipeline.Dtos.Output;
 
 namespace DC.Business.Application.Contracts.Interfaces.Organization.Listing
 {
-    public interface IListSellHouseService : IApplicationService<SellHouseDto, ulong>
+    public interface IListPropertyService : IApplicationService<SellHouseDto, ulong>
     {
     }
 }

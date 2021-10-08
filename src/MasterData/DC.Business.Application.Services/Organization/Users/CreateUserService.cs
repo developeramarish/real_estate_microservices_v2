@@ -34,14 +34,14 @@ namespace DC.Business.Application.Services.Organization.Users
         private readonly IRabbitMQClient _rabbitMqClient;
         private readonly IConfiguration _configuration;
         private IMapper _mapper;
-        private readonly IListSellHouseService _listSellHouseService;
+        private readonly IListPropertyService _listSellHouseService;
         private readonly IImageService _imageService;
         private readonly IListingRepository _listingRepository;
 
         public CreateUserService(IConfiguration configuration, IUserRepository userRepository, 
             IUsersElasticRepository usersElasticRepository, IRabbitMQClient rabbitMqClient,
             IMapper mapper,
-            IListSellHouseService listSellHouseService,
+            IListPropertyService listSellHouseService,
             IImageService imageService,
             IListingRepository listingRepository)
         {

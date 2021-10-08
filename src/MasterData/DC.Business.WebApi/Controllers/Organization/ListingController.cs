@@ -17,7 +17,7 @@ namespace DC.Business.WebApi.Controllers.Organization
     // [Authorize]
     public class ListingController : ControllerBase
     {
-        private readonly IListSellHouseService _listSellHouseService;
+        private readonly IListPropertyService _listPropertyService;
         private readonly ITempListingForUnauthenticatedService _tempListingForUnauthenticatedService;
         private readonly IGetOperationTypesService _getOperationTypesService;
         private readonly IGetPropertyTypesService _getPropertyTypesService;
@@ -30,7 +30,7 @@ namespace DC.Business.WebApi.Controllers.Organization
         private readonly IApprovePropertyForAdminService _approvePropertyForAdminService;
         private readonly IBlockPropertyByAdminService _blockPropertyByAdminService;
 
-        public ListingController(IListSellHouseService listSellHouseService,
+        public ListingController(IListPropertyService listPropertyService,
             ITempListingForUnauthenticatedService tempListingForUnauthenticatedService,
             IGetOperationTypesService getOperationTypesService,
             IGetPropertyTypesService getPropertyTypesService,
@@ -43,7 +43,7 @@ namespace DC.Business.WebApi.Controllers.Organization
             IApprovePropertyForAdminService approvePropertyForAdminService,
             IBlockPropertyByAdminService blockPropertyByAdminService)
         {
-            _listSellHouseService = listSellHouseService ?? throw new ArgumentNullException(nameof(listSellHouseService));
+            _listPropertyService = listPropertyService ?? throw new ArgumentNullException(nameof(listPropertyService));
             _getOperationTypesService = getOperationTypesService ?? throw new ArgumentNullException(nameof(getOperationTypesService));
             _getPropertyTypesService = getPropertyTypesService ?? throw new ArgumentNullException(nameof(getPropertyTypesService));
             _getPropertiesByUserBasicService = getPropertiesByUserBasicService ?? throw new ArgumentNullException(nameof(getPropertiesByUserBasicService));
@@ -57,10 +57,10 @@ namespace DC.Business.WebApi.Controllers.Organization
             _tempListingForUnauthenticatedService = tempListingForUnauthenticatedService ?? throw new ArgumentNullException(nameof(tempListingForUnauthenticatedService));
         }
 
-        [HttpPost("listSellHouse")]
+        [HttpPost("listProperty")]
         public async Task<IActionResult> ListSellHouse([FromBody] SellHouseDto sellHouseDto, CancellationToken cancellationToken = default)
         {
-            var result = await _listSellHouseService.ExecuteServiceAsync(sellHouseDto);
+            var result = await _listPropertyService.ExecuteServiceAsync(sellHouseDto);
             return Ok(result);
         }
 

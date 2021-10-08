@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DC.Business.Application.Contracts.Dtos.Organization.Listing;
 using DC.Business.Domain.ElasticEntities;
 using DC.Business.Domain.ElasticEntities.Dto;
+using DC.Business.Domain.Enums;
 
 namespace DC.Business.Domain.Repositories.ElasticSearch
 {
@@ -19,8 +20,8 @@ namespace DC.Business.Domain.Repositories.ElasticSearch
         Task ApprovePropertyForAdminService(string documentId);
         Task BlockPropertyByAdminService(string documentId);
 
-        Task<IEnumerable<Property>> GetTop4NewHousesAsync(int typeId);
-        Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId);
-        Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId);
+        Task<IEnumerable<Property>> GetTop4ByTypePropertiesAsync(PropertyTypeEnum type);
+        //Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId);
+        //Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId);
     }
 }

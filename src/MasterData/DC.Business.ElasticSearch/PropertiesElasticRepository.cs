@@ -129,27 +129,27 @@ namespace DC.Business.ElasticSearch
             return (IEnumerable<Property>)result;
         }
 
-        public async Task<IEnumerable<Property>> GetTop4NewHousesAsync(int typeId)
+        public async Task<IEnumerable<Property>> GetTop4ByTypePropertiesAsync(PropertyTypeEnum type)
         {
             var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
-            .Query(x => x.Term(x => x.PropertyTypeId, typeId))
+            .Query(x => x.Term(x => x.PropertyType, type))
             .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
             return result.Documents;
         }
-        public async Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId)
-        {
-            var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
-            .Query(x => x.Term(x => x.PropertyTypeId, typeId))
-            .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
-            return result.Documents;
-        }
-        public async Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId)
-        {
-            var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
-            .Query(x => x.Term(x => x.PropertyTypeId, typeId))
-            .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
-            return result.Documents;
-        }
+        //public async Task<IEnumerable<Property>> GetTop4NewApartmentsAsync(int typeId)
+        //{
+        //    var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
+        //    .Query(x => x.Term(x => x.PropertyTypeId, typeId))
+        //    .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
+        //    return result.Documents;
+        //}
+        //public async Task<IEnumerable<Property>> GetTop4NewRoomsAsync(int typeId)
+        //{
+        //    var result = await elasticClient.SearchAsync<Property>(s => s.Index("properties")
+        //    .Query(x => x.Term(x => x.PropertyTypeId, typeId))
+        //    .Size(4).Sort(q => q.Descending(p => p.CreationDate)));
+        //    return result.Documents;
+        //}
 
 
         #region private methods
