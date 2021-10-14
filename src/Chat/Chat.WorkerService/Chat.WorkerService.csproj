@@ -1,25 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>367c9986-859d-4179-bd2e-a68f65745c32</UserSecretsId>
+    <UserSecretsId>dotnet-Chat.WorkerService-CFB9756F-A9E0-46E6-AC3D-F88133C50774</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="PropertyForYou.Common" Version="1.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chat.Domain\Chat.Domain.csproj" />
     <ProjectReference Include="..\Chat.Infrastructure.IRepositories\Chat.Infrastructure.IRepositories.csproj" />
     <ProjectReference Include="..\Chat.Infrastructure.Repositories\Chat.Infrastructure.Repositories.csproj" />
   </ItemGroup>
-
 </Project>

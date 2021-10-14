@@ -117,7 +117,7 @@ namespace DC.Business.Application.Services.Organization.Users
             }
 
             var payload = JsonSerializer.Serialize(newUser);
-            await _rabbitMqClient.PublishMessageAsync("CreateUser", payload, "user.created");
+            await _rabbitMqClient.PublishMessageAsync("CreatedUser", payload, "email_chat");
 
             return BuildOperationResultDto(newUserId);
         }

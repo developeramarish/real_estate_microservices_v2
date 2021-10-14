@@ -80,7 +80,7 @@ namespace DC.Business.Application.Services.Organization.Listing
             await _propertiesElasticRepository.AddPropertyAsync(elasticProperty);
 
             var payload = JsonSerializer.Serialize(new { Email = user.Email });
-            await _rabbitMqClient.PublishMessageAsync( "CreateProperty", payload, "property.created");
+            await _rabbitMqClient.PublishMessageAsync("CreatedProperty", payload, "email_key");
 
             return BuildOperationResultDto(mySqlId);
         }

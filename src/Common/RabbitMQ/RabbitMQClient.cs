@@ -62,7 +62,11 @@ namespace Common.RabbitMQ
                     //Thread.Sleep(40000);
                     _connection = factory.CreateConnection(_hosts);
                     _model = _connection.CreateModel();
-                    _model.ExchangeDeclare(_exchange, "fanout", durable: true, autoDelete: false);
+                    _model.ExchangeDeclare(_exchange, "direct", durable: true, autoDelete: false);
+                    _model.QueueDeclare("email", true, false, false, null);
+                    _model.QueueDeclare("chat", true, false, false, null);
+                    _model.QueueBind("email", _exchange, "email_key");
+                    _model.QueueBind("chat", _exchange, "chat_key");
                 });
         }
 

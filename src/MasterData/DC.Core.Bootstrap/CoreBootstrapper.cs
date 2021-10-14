@@ -48,7 +48,7 @@ namespace DC.Core.Bootstrap
 
         #region RabbitMQSection
 
-        public static void RegisterRabbitMQPublisherHandler(this IServiceCollection services, IConfiguration config)
+        public static void RegisterRabbitMQRabbitMQHandler(this IServiceCollection services, IConfiguration config)
         {
             GetRabbitMQSettings(config, "RabbitMQHandler");
             services.AddTransient<IMessageHandler>(_ => new RabbitMQHandler(

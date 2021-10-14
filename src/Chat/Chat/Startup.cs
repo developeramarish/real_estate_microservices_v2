@@ -1,6 +1,10 @@
 using Chat.Chat;
+using Chat.Domain;
 using Chat.Hubs;
+using Chat.Infrastructure.IRepositories.Interfaces;
+using Chat.Infrastructure.Repositories;
 using Common.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +38,7 @@ namespace Chat
             services.AddControllers();
             services.AddSignalR();
             services.AddSingleton<UserInfoInMemory>();
+            services.AddMediatR(typeof(Startup));
 
             services.AddCors(options =>
             {
@@ -97,6 +102,11 @@ namespace Chat
                     }
                 };
             });
+
+            // Mongo
+            services.Configure<MongoConnectionAppSettings>(Configuration.GetSection("MongoConnectionString"));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
 
             // SwaggerService.Configure(services);
 

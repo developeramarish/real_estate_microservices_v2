@@ -1,5 +1,6 @@
 ﻿using DC.Business.Application.Contracts.Interfaces;
 using DC.Business.Application.Contracts.Interfaces.Account;
+using DC.Business.Application.Contracts.Interfaces.Organization.Email;
 using DC.Business.Application.Contracts.Interfaces.Organization.Home;
 using DC.Business.Application.Contracts.Interfaces.Organization.Listing;
 using DC.Business.Application.Contracts.Interfaces.Organization.Listing.Admin;
@@ -7,6 +8,7 @@ using DC.Business.Application.Contracts.Interfaces.Organization.Users;
 using DC.Business.Application.Contracts.Interfaces.Services;
 using DC.Business.Application.Services.Account;
 using DC.Business.Application.Services.Elastic;
+using DC.Business.Application.Services.Organization.Email;
 using DC.Business.Application.Services.Organization.Home;
 using DC.Business.Application.Services.Organization.Listing;
 using DC.Business.Application.Services.Organization.Listing.Admin;
@@ -68,7 +70,8 @@ namespace DC.Business.Bootstrap
         {
             servicesContainer.AddTransient<IImageService, ImageService>();
             servicesContainer.AddTransient<ICitiesElasticService, CitiesElasticService>();
-            servicesContainer.AddTransient<IIndexService, IndexService>(); 
+            servicesContainer.AddTransient<IIndexService, IndexService>();
+            servicesContainer.AddTransient<ISendEmailService, SendEmailService>();
 
             return servicesContainer;
         }

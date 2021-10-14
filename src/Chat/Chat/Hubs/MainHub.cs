@@ -33,7 +33,7 @@ namespace Chat.Hubs
             {
                 // new user
 
-                var list = _userInfoInMemory.GetAllUsersExceptThis(Context.User.Identity.Name).ToList();
+                // var list = _userInfoInMemory.GetAllUsersExceptThis(Context.User.Identity.Name).ToList();
                 await Clients.AllExcept(new List<string> { Context.ConnectionId }).SendAsync(
                     "NewOnlineUser",
                     _userInfoInMemory.GetUserInfo(Context.User.Identity.Name)

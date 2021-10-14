@@ -55,6 +55,7 @@ namespace Email
         {
             try
             {
+                _logger.LogInformation($"Received this email [{message}].");
                 var emailIcomingMessage = JsonSerializer.Deserialize<EmailDto>(message);
                 _logger.LogInformation($"Sending confirmation email to [{emailIcomingMessage}].");
 
@@ -67,6 +68,7 @@ namespace Email
                 _sendGridKey = appSettings.ApiKey;
                 // }
 
+                _logger.LogInformation($"checking if null [{emailIcomingMessage?.Email}].");
                 if (emailIcomingMessage?.Email != null)
                 {
                     switch (messageType)
