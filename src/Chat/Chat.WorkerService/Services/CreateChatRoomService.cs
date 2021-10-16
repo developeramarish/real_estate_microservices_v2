@@ -20,28 +20,28 @@ namespace Chat.WorkerService.Services
 
         public async Task Handle(EmailDto email)
         {
-            Guard.Against.NegativeOrZero(email.FirstUserId, nameof(email.FirstUserId));
-            Guard.Against.NegativeOrZero(email.SecondUserId, nameof(email.SecondUserId));
+            Guard.Against.NullOrEmpty(email.FirstUserEmail, nameof(email.FirstUserId));
+            Guard.Against.Null(email.SecondUserId, nameof(email.SecondUserId));
 
-            var firstUser = await _userRepository.GetByMySqlIdAsync(email.FirstUserId);
+            var firstUser = await _userRepository.GetByEmailAsync(email.FirstUserEmail);
 
             if (firstUser == null)
             {
                 firstUser = new User();
-                firstUser.Create(email.FirstUserId);
+                firstUser.Create(email.FirstUserId, email.FirstUserEmail);
                 await _userRepository.CreateAsync(firstUser);
             }
-            var secondUser = await _userRepository.GetByMySqlIdAsync(email.SecondUserId);
+            var secondUser = await _userRepository.GetByEmailAsync(email.SecondUserEmail);
 
             if (secondUser == null)
             {
                 secondUser = new User();
-                secondUser.Create(email.SecondUserId);
+                secondUser.Create(email.SecondUserId, email.SecondUserEmail);
                 await _userRepository.CreateAsync(secondUser);
             }
             var newChatRoom = new ChatRoom();
 
-            newChatRoom.Create(firstUser.MySqlId, secondUser.MySqlId);
+            newChatRoom.Create(firstUser.MySqlId, secondUser.MySqlId, firstUser.Email, secondUser.Email);
 
             var message = new Message();
             message.Created = DateTime.UtcNow;

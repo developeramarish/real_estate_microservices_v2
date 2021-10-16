@@ -11,15 +11,19 @@ namespace Chat.Domain.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; private set; }
-        public int FirstUserMySqlId { get; private set; }
-        public int SecondUserMySqlId { get; private set; }
+        public int? FirstUserMySqlId { get; private set; }
+        public int? SecondUserMySqlId { get; private set; }
+        public string FirstUserEmail { get; set; }
+        public string SecondUserEmail { get; set; }
         public List<Message> Messages { get; private set; }
         public DateTime Updated { get; private set; }
 
-        public void Create(int firstUserId, int secondUserId)
+        public void Create(int? firstUserId, int? secondUserId, string firstUserEmail, string secondUserEmail)
         {
             FirstUserMySqlId = firstUserId;
             SecondUserMySqlId = secondUserId;
+            FirstUserEmail = firstUserEmail;
+            SecondUserEmail = secondUserEmail;
             Messages = new List<Message>();
             Updated = DateTime.UtcNow;
         }

@@ -10,8 +10,10 @@ namespace Chat.Infrastructure.IRepositories.Interfaces
     {
         Task<User> GetByIdAsync(string id);
         Task<User> GetByMySqlIdAsync(int id);
+        Task<User> GetByEmailAsync(string email);
         Task CreateAsync(User user);
         Task UpdateAddChatRoomAsync(User user);
         Task DeleteAsync(string id);
+        Task UpdateConnectionIdsAsync(User user);
     }
 }

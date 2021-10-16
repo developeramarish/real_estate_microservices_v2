@@ -33,6 +33,11 @@ namespace Chat.Infrastructure.Repositories
             return await _collection.Find<User>(c => c.MySqlId == id).FirstOrDefaultAsync();
         }
 
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _collection.Find<User>(c => c.Email == email).FirstOrDefaultAsync();
+        }
+
         public async Task CreateAsync(User user)
         {
             await _collection.InsertOneAsync(user);
@@ -42,6 +47,14 @@ namespace Chat.Infrastructure.Repositories
             var filter = Builders<User>.Filter.Eq(s => s.Id, user.Id);
             var update = Builders<User>.Update
                 .Set(s => s.ChatRoomIds, user.ChatRoomIds);
+            await _collection.UpdateOneAsync(filter, update);
+        }
+
+        public async Task UpdateConnectionIdsAsync(User user)
+        {
+            var filter = Builders<User>.Filter.Eq(s => s.Id, user.Id);
+            var update = Builders<User>.Update
+                .Set(s => s.SignalRConnectionIds, user.SignalRConnectionIds);
             await _collection.UpdateOneAsync(filter, update);
         }
 

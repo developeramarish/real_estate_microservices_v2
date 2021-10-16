@@ -11,18 +11,28 @@ namespace Chat.Domain.Entities
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        public int MySqlId { get; set; }
-        public List<string> ChatRoomIds { get; set; }
+        public string Id { get; private set; }
+        public int? MySqlId { get; private set; }
+        public string Email { get; private set; }
+        public List<string> ChatRoomIds { get; private set; }
+        public List<string> SignalRConnectionIds { get; private set; }
 
         public DateTime Created;
         public DateTime Updated;
 
-        public void Create(int mySqlId)
+        public void Create(int? mySqlId, string email)
         {
             MySqlId = mySqlId;
+            Email = email;
             ChatRoomIds = new List<string>();
+            SignalRConnectionIds = new List<string>();
             Created = DateTime.UtcNow;
+        }
+
+        private void UpdateEmail(string email)
+        {
+            Email = email;
+            Updated = DateTime.UtcNow;
         }
 
         public void AddChat(string chatId)
@@ -35,6 +45,19 @@ namespace Chat.Domain.Entities
         {
             var itemToRemove = ChatRoomIds.Single(r => r.Contains(chatId));
             ChatRoomIds.Remove(itemToRemove);
+            Updated = DateTime.UtcNow;
+        }
+
+        public void AddConnectionId(string connectionId)
+        {
+            SignalRConnectionIds.Add(connectionId);
+            Updated = DateTime.UtcNow;
+        }
+
+        public void RemoveConnectionId(string connectionId)
+        {
+            var itemToRemove = SignalRConnectionIds.Single(r => r.Contains(connectionId));
+            SignalRConnectionIds.Remove(itemToRemove);
             Updated = DateTime.UtcNow;
         }
     }
