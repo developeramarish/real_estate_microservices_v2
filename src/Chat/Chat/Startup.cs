@@ -18,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,8 +39,10 @@ namespace Chat
             services.AddControllers();
             services.AddSignalR();
             services.AddSingleton<UserInfoInMemory>();
-            services.AddMediatR(typeof(Startup));
-
+            //services.AddMediatR(typeof(Startup));
+            var assembly = AppDomain.CurrentDomain.Load("Chat.Business");
+            services.AddMediatR(assembly);
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowMyOrigins",

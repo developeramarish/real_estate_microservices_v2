@@ -49,7 +49,12 @@ namespace Chat.WorkerService.Services
 
             newChatRoom.AddMessage(message);
 
-            await _chatRoomRepository.CreateAsync(newChatRoom);
+            var result = await _chatRoomRepository.CreateAsync(newChatRoom);
+            firstUser.AddChat(result.Id);
+            secondUser.AddChat(result.Id);
+
+            await _userRepository.UpdateAddChatRoomAsync(firstUser);
+            await _userRepository.UpdateAddChatRoomAsync(secondUser);
         }
     }
 }

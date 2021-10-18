@@ -10,7 +10,7 @@ namespace Chat.Infrastructure.IRepositories.Interfaces
     {
         Task<ChatRoom> GetByIdAsync(string id);
         Task<List<ChatRoom>> GetByIdsAsync(string[] ids);
-        Task CreateAsync(ChatRoom chatRoom);
+        Task<ChatRoom> CreateAsync(ChatRoom chatRoom);
         Task UpdateMessagesAsync(ChatRoom chatRoom);
         Task DeleteAsync(string id);
     }

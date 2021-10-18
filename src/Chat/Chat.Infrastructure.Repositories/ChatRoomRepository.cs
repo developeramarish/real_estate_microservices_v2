@@ -33,9 +33,10 @@ namespace Chat.Infrastructure.Repositories
             var filter = Builders<ChatRoom>.Filter.In(x => x.Id, ids);
             return await _collection.Find(filter).ToListAsync();
         }
-        public async Task CreateAsync(ChatRoom chatRoom)
+        public async Task<ChatRoom> CreateAsync(ChatRoom chatRoom)
         {
             await _collection.InsertOneAsync(chatRoom);
+            return chatRoom;
         }
         public async Task UpdateMessagesAsync(ChatRoom chatRoom)
         {

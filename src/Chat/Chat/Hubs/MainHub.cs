@@ -1,4 +1,5 @@
 ﻿using Chat.Chat;
+using Chat.Domain.Entities;
 using Chat.Infrastructure.IRepositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
@@ -51,6 +52,39 @@ namespace Chat.Hubs
             }
             await base.OnConnectedAsync();
             //return result;
+        }
+
+        public async Task SendPrivateMessage(string receiverMySqlId, string message, string chatRoomId)
+        {
+                // Who is the sender;
+                var sender = await _userRepository.GetByMySqlIdAsync(IdentityName);
+
+                if (sender == null)
+                {
+                    await Clients.Caller.SendAsync("onError", "No user");
+                }
+
+                if (!sender.SignalRConnectionIds.Any())
+                {
+                    await Clients.Caller.SendAsync("onError", "Some issue. Shoud be connected first");
+                }
+
+                // who is the receiver
+                var receiver = await _userRepository.GetByMySqlIdAsync(Int32.Parse(receiverMySqlId));
+
+                var chatRoom = await _chatRoomRepository.GetByIdAsync(chatRoomId);
+
+                chatRoom.AddMessage(new Message() { Created = DateTime.UtcNow, MessageText = message });
+
+                await _chatRoomRepository.UpdateMessagesAsync(chatRoom);
+
+                if (receiver != null && receiver.SignalRConnectionIds.Any())
+                {
+                    foreach(var conn in receiver.SignalRConnectionIds)
+                    {
+                        await Clients.Client(conn).SendAsync("newMessage", message);
+                    }
+                }
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)

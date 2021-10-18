@@ -67,7 +67,7 @@ services:
       - esnetwork
 
   mongo:
-    container_name: mongodb
+    container_name: mongo
     image: mongo:4.4.6
     volumes:
       - mongo:/data/db

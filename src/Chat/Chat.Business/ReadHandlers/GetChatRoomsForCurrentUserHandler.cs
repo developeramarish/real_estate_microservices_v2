@@ -29,7 +29,7 @@ namespace Chat.Business.ReadHandlers
             List<ChatRoom> list = new List<ChatRoom>();
             if (user != null)
             {
-                list = await _chatRoomRepository.GetByIdsAsync(user.SignalRConnectionIds.ToArray());
+                list = await _chatRoomRepository.GetByIdsAsync(user.ChatRoomIds.ToArray());
             }
 
             return list;
