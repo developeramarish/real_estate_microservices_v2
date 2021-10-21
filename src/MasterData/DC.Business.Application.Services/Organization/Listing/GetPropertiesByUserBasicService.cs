@@ -32,6 +32,7 @@ namespace DC.Business.Application.Services.Organization.Listing
             {
                 Id = x.Id,
                 UserId = x.UserId,
+                MySqlId = x.Id,
                 Price = x.Price,
                 NetAream2 = x.NetAream2,
                 Typology = x.Typology,
