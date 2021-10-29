@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatworker
+  labels:
+    app: chatworker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatworker
+  template:
+    metadata:
+      labels:
+        app: chatworker
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        name: chatworker
+        image: dcbusinesschatworker
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 83
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatworker
+spec:
+  type: ClusterIP
+  ports:
+    - port: 83
+  selector:
+    app: chatworker

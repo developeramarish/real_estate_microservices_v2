@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rqconfigmap
+data:
+  rabbitmq.conf: |
+    default_user = Administrator
+    default_pass = Password
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rabbitmq
+    version: v1
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: Administrator
+        - name: RABBITMQ_DEFAULT_PASS
+          value: Password
+        image: rabbitmq:3-management-alpine
+        imagePullPolicy: IfNotPresent
+        name: rabbitmq
+        ports:
+        - containerPort: 15672
+        - containerPort: 5672
+        volumeMounts:
+        - name: rqconfig
+          mountPath: /var/lib/rabbitmq
+          readOnly: false
+      restartPolicy: Always
+      volumes:
+      - name: rqconfig
+        configMap:
+          name: rqconfigmap
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq
+spec:
+  type: NodePort
+  ports:
+  - name: "http-admin"
+    port: 15672
+    targetPort: 15672
+    nodePort: 30001
+  - name: "data"
+    port: 5672
+    targetPort: 5672
+  selector:
+    app: rabbitmq

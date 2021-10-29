@@ -85,10 +85,11 @@ kind: Service
 metadata:
   name: db
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: "3306"
     port: 3306
     targetPort: 3306
+    nodePort: 30003
   selector:
     app: db

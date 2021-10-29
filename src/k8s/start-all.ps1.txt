@@ -1,0 +1,11 @@
+kubectl apply `
+    -f ./rabbitmq.yml `
+    -f ./db.yml `
+    -f ./elastic.yml `
+    -f ./mongo.yml `
+    -f ./kibana.yml `
+    -f ./webapi.yml `
+    -f ./chat.yml `
+    -f ./chatworker.yml `
+    -f ./email.yml `
+    -f ./ingress.yml

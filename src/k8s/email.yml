@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: email
   labels:
     app: email
-  name: email
 spec:
   replicas: 1
   selector:
@@ -17,21 +17,14 @@ spec:
       containers:
       - env:
         - name: ASPNETCORE_ENVIRONMENT
-          value: Development
-        - name: ASPNETCORE_HOSTINGSTARTUPASSEMBLIES
-          value: Microsoft.AspNetCore.ApplicationInsights.HostingStartup
-        - name: RABBIT_HOSTNAME
-          value: rabbitmq1
-        image: dcbusinessemail:latest
+          value: Production
         name: email
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-          limits:
-            cpu: 500m
-            memory: 200Mi
-      
+        image: dcbusinessemail:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 81
+      restartPolicy: Always
+
 ---
 
 apiVersion: v1
